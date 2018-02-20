@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.megatimgroup.net/model-config"
+           xmlns:tns="http://www.megatimgroup.net/model-config"
+           elementFormDefault="qualified">
+
+
+    <xs:element name="model-config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:elements" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="elements">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:element" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="element">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:roles" minOccurs="1" maxOccurs="1" />
+                <xs:element ref="tns:exclures" minOccurs="1" maxOccurs="1" />
+                <xs:element ref="tns:groupes" minOccurs="1" maxOccurs="1" />
+                <xs:element ref="tns:relations" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+            <xs:attribute name="type" type="xs:string" use="required" />
+            <xs:attribute name="validate_type" type="xs:string" use="optional" default=""/>
+            <xs:attribute name="reject_type" type="xs:string" use="optional" default=""/>
+            <xs:attribute name="idclass" type="xs:string" use="required" />
+            <xs:attribute name="idname" type="xs:string" use="required" />
+            <xs:attribute name="internal" type="xs:boolean" use="required" />
+            <xs:attribute name="test" type="xs:boolean" use="optional" default="false"/>
+            <xs:attribute name="deseable" type="xs:boolean" use="optional" default="false" />
+            <xs:attribute name="reporting" type="xs:boolean" use="optional" default="false" />
+            <xs:attribute name="prefix" type="xs:string" use="optional" default="" />
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="relations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:one-to-many" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="tns:one-to-one" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="tns:many-to-many" minOccurs="0" maxOccurs="unbounded" />     
+                <!-- <xs:element ref="tns:many-to-one" minOccurs="0" maxOccurs="unbounded" />   -->                             
+            </xs:sequence>			
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="exclures">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:exclure" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>			
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="groupes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:groupe" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>			
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="roles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:role" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>			
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="role"  >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="role" type="xs:string" />
+            </xs:sequence>			
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="one-to-many"  >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:summary" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>                    
+            <xs:attribute name="name" type="xs:string" use="required" />	
+            <xs:attribute name="cascade" type="xs:string" use="optional" default="all"  />                                            	
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="many-to-many"  >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:summary" minOccurs="0" maxOccurs="1" />
+            </xs:sequence> 
+            <xs:attribute name="name" type="xs:string" use="required" />                                                                  	
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="one-to-one"  >
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" />     
+            <xs:attribute name="cascade" type="xs:string" use="optional" default="all"  />                                                                	
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="summary"  >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:column" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>                      	
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="column"  >
+        <xs:complexType>
+            <xs:attribute name="value" type="xs:string" use="required" />                       	
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="exclure"  >
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" />	
+            <xs:attribute name="all" type="xs:boolean" use="optional" default="false" />
+            <xs:attribute name="edit" type="xs:boolean" use="optional" default="false" />
+            <xs:attribute name="search" type="xs:boolean" use="optional" default="true" />
+            <xs:attribute name="model" type="xs:boolean" use="optional" default="true" />		
+        </xs:complexType>
+    </xs:element>
+        
+    <xs:element name="groupe"  >
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="label" type="xs:string" use="required" />	
+            <xs:attribute name="indexs" type="xs:string" use="required" />		
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="frame-config">            
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:principalscreen" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="principalscreen">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:module" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="module">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:action" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="tns:submodule" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />    
+            <xs:attribute name="label" type="xs:string" use="required" /> 
+            <xs:attribute name="vmenu" type="xs:boolean" use="optional" default="true"/>                                   
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="submodule">
+        <xs:complexType>
+            <xs:sequence>   
+                <xs:element ref="tns:action" minOccurs="0" maxOccurs="unbounded" />                
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />    
+            <xs:attribute name="label" type="xs:string" use="required" />   
+            <xs:attribute name="independent" type="xs:boolean" default="false" />            
+        </xs:complexType>            
+    </xs:element>   
+    <xs:element name="action">
+        <xs:complexType>
+            <xs:attribute name="label" type="xs:string" use="required" />
+            <xs:attribute name="classname" type="xs:string" use="required" />  
+            <xs:attribute name="actionname" type="xs:string" use="required" />   
+            <xs:attribute name="actionindex" type="xs:int" use="required" /> 
+            <xs:attribute name="mnemonic" type="xs:string" use="required" />   
+            <xs:attribute name="prefix" type="xs:string" use="optional" default="" /> 
+            <xs:attribute name="separator" type="xs:boolean"  default="false" />   
+            <xs:attribute name="literal" type="xs:boolean"  default="false" />
+            <xs:attribute name="dialog" type="xs:boolean"  default="false" />                           
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="temporalfile">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:fileline" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>           
+        </xs:complexType>
+    </xs:element>
+     <xs:element name="fileline">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:linecolumn" minOccurs="0" maxOccurs="unbounded" />               
+            </xs:sequence>                                         
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="linecolumn">
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="value" type="xs:string" use="required" /> 
+            <xs:attribute name="type" type="xs:int" use="required" />   
+            <xs:attribute name="row" type="xs:int" use="required" />     
+            <xs:attribute name="column" type="xs:int" use="required" />                           
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

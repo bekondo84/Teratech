@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.megatimgroup.net/predicatelogic-config"
+	xmlns:tns="http://www.megatimgroup.net/predicatelogic-config"
+	elementFormDefault="qualified">
+
+
+	<xs:element name="predicate-config">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:entities" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="entities">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:entity" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="entity">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:validation" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="extend" type="xs:string" use="optional" />
+			<xs:attribute name="error-field" type="xs:string" use="required" />
+			<xs:attribute name="activate" type="xs:boolean" use="optional"	default="true" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="validation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:assertion" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="field-name" type="xs:string" use="required" />
+			<xs:attribute name="activate" type="xs:boolean" use="optional"
+				default="true" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="assertion">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:param-value" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="assert-name" type="tns:assert-name-type"
+				use="required" />
+			<xs:attribute name="error-code" type="xs:string" use="required" />
+			<xs:attribute name="activate" type="xs:boolean" use="optional"
+				default="true" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="param-value">
+		<xs:complexType>
+			<xs:attribute name="name" type="tns:param-value-name-type"
+				use="required" />
+			<xs:attribute name="field" type="xs:string" use="optional" />
+			<xs:attribute name="value" type="xs:string" use="optional" />
+			<xs:attribute name="entity" type="xs:string" use="optional" />
+			<xs:attribute name="collection" type="xs:string" use="optional" />
+			<xs:attribute name="properties" type="xs:string" use="optional" />
+			<xs:attribute name="list" type="xs:string" use="optional" />
+			<xs:attribute name="offset" type="xs:int" use="optional" />
+			<xs:attribute name="size" type="xs:int" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="assert-name-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="equal" />
+			<xs:enumeration value="empty" />
+			<xs:enumeration value="notEmptyValues" />
+			<xs:enumeration value="dateFormat" />
+			<xs:enumeration value="sum" />
+			<xs:enumeration value="size" />
+                        <xs:enumeration value="format" />
+			<xs:enumeration value="greater" />
+			<xs:enumeration value="lower" />
+			<xs:enumeration value="ribChecker" />			
+			<xs:enumeration value="notEqual" />			
+			<xs:enumeration value="notEmpty" />			
+			<xs:enumeration value="greaterOrEqual" />
+			<xs:enumeration value="lowerOrEqual" />
+					
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="param-value-name-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="sizeValue" />
+                        <xs:enumeration value="patternValue" />
+			<xs:enumeration value="ribValue" />			
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.megatimgroup.net/model-config"
+           xmlns:tns="http://www.megatimgroup.net/model-config"
+           elementFormDefault="qualified">
+
+
+    <xs:element name="model-config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:entities" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="entities">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:entity" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="entity">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:roles" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="class" type="xs:string" use="required" />
+			
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="roles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:role" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>			
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="role"  >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="role" type="xs:string" />
+            </xs:sequence>			
+        </xs:complexType>
+    </xs:element>
+
+	
+</xs:schema>

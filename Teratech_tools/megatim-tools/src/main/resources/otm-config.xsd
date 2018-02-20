@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.megatimgroup.net/otm-config" 
+        xmlns:tns="http://www.megatimgroup.net/otm-config"
+	elementFormDefault="qualified">
+
+	<xs:element name="otm-config">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:file" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="tns:bean" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="file">
+		<xs:complexType>
+
+			<xs:sequence>
+				<xs:element ref="tns:field" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Collection des configurations des attributs constituant le nom du fichier</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+
+			<xs:attribute name="file-id" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Identifiant du fichier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="suffix" type="tns:suffix-type" use="required">
+				<xs:annotation>
+					<xs:documentation>Extension du fichier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="separator" type="tns:separator-type" use="optional" default="-">
+				<xs:annotation>
+					<xs:documentation>Séparteur des composants du nom du fichier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="size" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Longueur du nom du fichier</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="default-file" type="xs:boolean" use="optional" default="false">
+				<xs:annotation>
+					<xs:documentation>Fichier par défault</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="bean">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:field" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Collection des configurations des attributs constituant l'entité</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			
+			<xs:attribute name="bean-id" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Identifiant du bean</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="extends" type="xs:string" use="prohibited">
+				<xs:annotation>
+					<xs:documentation>Identifiant du bean parents</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="size" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Longueur d'un enregistrement des données à traiter</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="unppading" type="xs:boolean" use="optional" default="true">
+				<xs:annotation>
+					<xs:documentation>Valeur indiquant si le netoyage des valeurs de rembourrage est autorise après chargement</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="bean-type" type="tns:bean-type" use="required">
+				<xs:annotation>
+					<xs:documentation>Valeur indiquant le type de beans</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+
+			<xs:attribute name="num-rows-property" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Propriété contenant le nombre de ligne de la remise courante</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+																	
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="field">
+		<xs:complexType>
+		
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>Nom du champ dans le texte</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+			
+			<xs:attribute name="index" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Position du champ dans la chaine texte</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+			
+			<xs:attribute name="size" type="xs:int" use="optional">
+				<xs:annotation>
+					<xs:documentation>Nombre de position des caractères du champ dans le texte</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+
+			<xs:attribute name="pattern" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation>Patron de lecture de la valeur du champ dans le texte. Exple : 2-3,8-9</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+
+			<xs:attribute name="padding-char" type="tns:padding-char-type" use="required">
+				<xs:annotation>
+					<xs:documentation>Charactère de  rembourrage du champ dans le texte</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			
+			<xs:attribute name="padding-way" type="tns:padding-way-type" use="required">
+				<xs:annotation>
+					<xs:documentation>Direction de rembourage du champ dans le texte</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+	
+			<xs:attribute name="unppading" type="xs:boolean" use="optional" default="true">
+				<xs:annotation>
+					<xs:documentation>Indique si le netoyage des charactères de rembourrage du champ est autorise</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+			
+			<xs:attribute name="read-only" type="xs:boolean" use="optional" default="false">
+				<xs:annotation>
+					<xs:documentation>Spécifie si le champ est valide uniquement lors de la lecture d'un fichier en pas en écriture</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>	
+																									
+		</xs:complexType>
+	</xs:element>
+
+	<xs:simpleType name="separator-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="" />
+			<xs:enumeration value="-" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="suffix-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=".ENV" />
+			<xs:enumeration value=".RCP" />
+			<xs:enumeration value=".DATA" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="bean-type">
+		<xs:restriction base="xs:string">
+		
+			<xs:enumeration value="HEADER">
+			<xs:annotation><xs:documentation>Bean de type entête</xs:documentation></xs:annotation> 
+			</xs:enumeration>
+			
+			<xs:enumeration value="ITEM" >
+			<xs:annotation><xs:documentation>Bean de type détail</xs:documentation></xs:annotation>
+			</xs:enumeration>
+			
+			<xs:enumeration value="ITEM_CHILD">
+			<xs:annotation><xs:documentation>Bean de type de l'enregistrement complémentaire du détail</xs:documentation></xs:annotation> 
+			</xs:enumeration>
+			
+			<xs:enumeration value="HEADER_ITEM">
+			<xs:annotation><xs:documentation>Bean de type concomittant d'entête et de détail</xs:documentation></xs:annotation>
+			</xs:enumeration>
+			
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="padding-way-type">
+		<xs:restriction base="xs:string">
+		
+			<xs:enumeration value="LEFT">
+				<xs:annotation><xs:documentation>Rembourage à gauche</xs:documentation></xs:annotation> 
+			</xs:enumeration>
+			
+			<xs:enumeration value="RIGTH" >
+				<xs:annotation><xs:documentation>Rembourage à droite</xs:documentation></xs:annotation>
+			</xs:enumeration>
+			
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="padding-char-type">
+		<xs:restriction base="xs:string">
+		
+			<xs:enumeration value=" ">
+				<xs:annotation><xs:documentation>Caractère rembourage : espace</xs:documentation></xs:annotation> 
+			</xs:enumeration>
+			
+			<xs:enumeration value="0" >
+				<xs:annotation><xs:documentation>Valeur numérique  de rembourage : zéro</xs:documentation></xs:annotation>
+			</xs:enumeration>
+			
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+
+
+</xs:schema>
