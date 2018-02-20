@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<model-config xmlns:xsi="http://www.w3.org/2001/XMLSchema"
+	xsi:schemaLocation="http://www.megatimgroup.net/model-config ../xsd/model-config.xsd"
+	xmlns="http://www.megatimgroup.net/model-config">
+    <elements>
+<!--        <element type="com.core.model.server.Etudiant"  idclass="long"  idname="id"   deseable="false">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>        -->
+        <element type="com.teratech.gmao.model.base.Article"  idclass="long"  idname="id" deseable="false">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>
+<!--        <element type="com.basaccount.model.comptabilite.Taxe"  idclass="long"  idname="id" deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>
+        <element type="com.basaccount.model.comptabilite.SectionAnalytique"  idclass="long"  idname="id" deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>   
+        <element type="com.basaccount.model.comptabilite.CompteAnalytique"  idclass="long"  idname="id" deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>   
+        <element type="com.basaccount.model.comptabilite.NiveauAnalyse"  idclass="long"  idname="id" deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>   
+        <element type="com.basaccount.model.comptabilite.JournalComptable"  idclass="Long"  idname="id"  deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>   
+        <element type="com.basaccount.model.tiers.Tier"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>  
+        <element type="com.basaccount.model.tiers.Civilite"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>  
+        <element type="com.basaccount.model.tiers.ConditionPaiement"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>
+        <element type="com.basaccount.model.banques.Banque"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>  
+        <element type="com.basaccount.model.banques.CompteBancaire"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>  
+        <element type="com.basaccount.model.tiers.Contact"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>
+        <element type="com.basaccount.model.operations.PieceComptable"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element> 
+        <element type="com.basaccount.model.operations.EcritureComptable"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element> 
+       <element type="com.basaccount.model.comptabilite.ExerciceComptable"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element> 
+        <element type="com.basaccount.model.operations.JournalSaisie"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>  
+        <element type="com.basaccount.model.operations.EcritureAnalytique"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>
+        <element type="com.basaccount.model.operations.EcritureTier"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>
+         <element type="com.basaccount.model.operations.ClotureExerciceComptable"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>
+         <element type="com.basaccount.model.operations.ClotureJournal"  idclass="Long"  idname="id"   deseable="true">
+            <roles>
+                <role>ADMIN</role>
+            </roles>           
+        </element>-->
+   </elements>
+    
+</model-config>

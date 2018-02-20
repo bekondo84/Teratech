@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="teratech" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>java:/teratechstock</jta-data-source>
+    <class>com.teratech.stock.model.base.Article</class>
+    <class>com.teratech.stock.model.base.CategorieProduit</class>
+    <class>com.teratech.stock.model.base.FamilleArticle</class>
+    <class>com.teratech.stock.model.base.UniteAchat</class>
+    <class>com.teratech.stock.model.base.UniteGestion</class>
+    <class>com.teratech.stock.model.base.Pays</class>
+    <class>com.teratech.stock.model.banques.Banque</class>
+    <class>com.teratech.stock.model.banques.CompteBancaire</class>
+    <class>com.teratech.stock.model.base.Civilite</class>
+    <class>com.teratech.stock.model.base.ConditionPaiement</class>
+    <class>com.teratech.stock.model.base.Contact</class>
+    <class>com.teratech.stock.model.base.Entrepot</class>
+    <class>com.teratech.stock.model.base.Tier</class>
+    <class>com.teratech.stock.model.comptabilite.Compte</class>
+    <class>com.teratech.stock.model.comptabilite.CompteAnalytique</class>
+    <class>com.teratech.stock.model.comptabilite.ExerciceComptable</class>
+    <class>com.teratech.stock.model.comptabilite.JournalComptable</class>
+    <class>com.teratech.stock.model.comptabilite.NiveauAnalyse</class>
+    <class>com.teratech.stock.model.comptabilite.SectionAnalytique</class>
+    <class>com.teratech.stock.model.comptabilite.Taxe</class>
+    <class>com.teratech.stock.model.base.Region</class>
+    <class>com.teratech.stock.model.base.Devise</class>
+    <class>com.teratech.stock.model.base.Societe</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+    </properties>
+  </persistence-unit>
+</persistence>

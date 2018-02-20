@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.keren</groupId>
+        <artifactId>rest-components</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.teratech</groupId>
+    <artifactId>gmao</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>gmao-tool</module>
+        <module>gmao-model</module>
+        <module>gmao-dao</module>
+        <module>gmao-core</module>
+        <module>gmao-rest</module>
+    </modules>
+</project>

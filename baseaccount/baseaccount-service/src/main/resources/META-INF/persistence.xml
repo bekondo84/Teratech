@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="keren" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>java:/baseaccount</jta-data-source>
+    <class>com.basaccount.model.banques.Banque</class>
+    <class>com.basaccount.model.banques.CompteBancaire</class>
+    <class>com.basaccount.model.comptabilite.Compte</class>
+    <class>com.basaccount.model.comptabilite.CompteAnalytique</class>
+    <class>com.basaccount.model.comptabilite.JournalComptable</class>
+    <class>com.basaccount.model.comptabilite.NiveauAnalyse</class>
+    <class>com.basaccount.model.comptabilite.Taxe</class>
+    <class>com.basaccount.model.tiers.Civilite</class>
+    <class>com.basaccount.model.tiers.ConditionPaiement</class>
+    <class>com.basaccount.model.tiers.Contact</class>
+    <class>com.basaccount.model.tiers.Tier</class>
+    <class>com.core.referentiels.Societe</class>
+    <class>com.core.referentiels.Devise</class>
+    <class>com.core.referentiels.Pays</class>
+    <class>com.core.referentiels.Region</class>
+    <class>com.basaccount.model.comptabilite.SectionAnalytique</class>
+    <class>com.basaccount.model.operations.EcritureComptable</class>
+    <class>com.basaccount.model.operations.PieceComptable</class>
+    <class>com.basaccount.model.comptabilite.ExerciceComptable</class>
+    <class>com.basaccount.model.operations.JournalSaisie</class>
+    <class>com.basaccount.model.operations.EcritureAnalytique</class>
+    <class>com.basaccount.model.operations.EcritureTier</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+<!--      <property name="hibernate.show_sql" value="true"/>-->
+    </properties>
+  </persistence-unit>
+</persistence>

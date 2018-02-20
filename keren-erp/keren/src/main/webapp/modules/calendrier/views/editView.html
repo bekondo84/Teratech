@@ -1,0 +1,151 @@
+      <div class="panel-body panel-container" style="padding:0;border:0px;height:480px;overflow-y:auto; margin-top:-15px;" >
+          <div class="panel panel-default col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+               <!--<div class="panel-body"  id="detail-panel-body" style="border:solid 2px red;height: 100%;">-->
+                   <form role="form" class="form-horizontal"  name="myForm" novalidate>
+                            <div class="form-group  col-sm-12  col-md-12">
+                                 <label>Titre evenement</label>
+                                 <input type="text" ng-model="selectedEvent.title" autofocus class="form-control input-sm" required/>
+                             </div>                            
+                            <!-- Tab Panne -->
+                            <div  role="tabpanel">
+                                    <ul class="nav  nav-tabs"  role="tablist">
+                                       <li role="presentation">
+                                              <a data-target="#participant"  aria-control="participant"  role="tab"  data-toggle="tab">
+                                                    Participants
+                                              </a>
+                                       </li>
+                                       <li role="presentation">
+                                              <a data-target="#profile"  aria-control="profile"  role="tab"  data-toggle="tab">
+                                                    Date de l'evenement
+                                              </a>
+                                       </li>
+                                       <li role="presentation">
+                                              <a data-target="#message"  aria-control="message"  role="tab"  data-toggle="tab">
+                                                    Options
+                                              </a>
+                                       </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                                       <div role="tabpanel"  class="tab-pane active"  id="participant" >
+                                                                    <table class="table table-sm table-striped table-bordered table-hover table-condensed">
+                                                                            <thead>
+                                                                                    <tr class="table-header">
+                                                                                            <th>Nom</th>
+                                                                                            <th>ADRESSE ELECTRONIQUE</th>
+                                                                                            <th>SOCIETE</th>
+                                                                                    </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                    <tr>
+                                                                                            <td colspan="3">
+                                                                                                    <a href="" data-toggle="modal" ng-click="showEditDialog()">Ajouter un element</a></td>
+                                                                                            <td></td>
+                                                                                    </tr>
+                                                                                    <tr ng-repeat="item in selectedEvent.participants"  style="cursor: pointer;">
+                                                                                            <td>{{item.intitule}}</td>
+                                                                                            <td>{{item.courriel}}</td>
+                                                                                            <td>{{item.societeCourante.designation}}</td>
+                                                                                            <td>
+                                                                                               <a href="" ng-click="removeUser(item)">
+                                                                                                       <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                                                               </a>
+                                                                                             </td>
+                                                                                    </tr>
+                                                                            </tbody>
+                                                                    </table>
+                                                            <!-- Fin  -->                                      
+                                                    </div>
+                                                    <div role="tabpanel" class="tab-pane"  id="profile" >
+                                                            <span style="display: inline-block;margin-right: 20px;width: 48%;">
+                                                                    <div class="input-group-sm  col-sm-12  col-md-12">
+                                                                      <label>Date et heure de debut </label>
+                                                                      <input type="datetime-local"  ng-model="selectedEvent.start" placeholder="yyyy-MM-ddTHH:mm:ss" autofocus class="form-control input-sm" required/>
+                                                                    </div>
+                                                                    <div class="form-check col-sm-12  col-md-12">
+                                                                            <label class="form-check-label" for="fullday">Toute la journee</label>
+                                                                            <br/>
+                                                                            <input name="fullday" type=checkbox  autofocus class="form-check-label" ng-model="selectedEvent.allDay" />
+                                                                    </div>
+                                                            </span>
+                                                            <span style="display: inline-block;width: 48%;">
+                                                                     <div class="input-group-sm  col-sm-12  col-md-12">
+                                                                              <label>Duree</label>
+                                                                              <input type="time"  autofocus class="form-control input-sm" ng-model="selectedEvent.duree" />
+                                                                    </div>
+                                                               <div class="input-group-sm col-sm-12  col-md-12">
+                                                                              <label for="sexe">Rappels</label>
+                                                                              <div class="input-group">
+                                                                                      <select class="selectpicker form-control input-sm" data-style="btn-default" ng-model="selectedEvent.rappel" 
+                                                                                               ng-options="item as item.designation for item in dataCache.rappels" ng-change="getRappelData()">
+                                                                                              <option value="">Please select options</option>                                                                                       
+                                                                                      </select>
+                                                                                      <span class="input-group-btn">
+                                                                                             <button type="button" class="btn btn-default my-group-button btn-sm" data-toggle="modal" data-target="#myModal002">
+                                                                                               <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:blue"></span>
+                                                                                             </button>
+                                                                                     </span>
+                                                                              </div>                             
+                                                                    </div>                                                             
+                                                            </span>
+                                                            <div class="form-group-sm">
+                                                              <label>Description : </label>
+                                                              <textarea   class="form-control" ng-model="selectedEvent.description" />
+                                                       </div>
+                                                            <!-- Fin  -->                                      
+                                                    </div>
+                                                     <div role="tabpanel"  class="tab-pane"  id="message" >
+                                                             <span style="display: inline-block;margin-right: 20px;width: 48%;">
+                                                                <div class="form-check col-sm-12  col-md-12">
+                                                                        <label class="form-check-label" for="fullday">Recurrent</label>
+                                                                        <br/>
+                                                                        <input name="recurrent" type=checkbox  autofocus class="form-check-label" ng-model="selectedEvent.recurrent" />
+                                                                 </div>
+                                                                 <div class="input-group-sm  col-sm-12  col-md-12">
+                                                                  <label>Lieu</label>
+                                                                  <input type="text"  autofocus class="form-control input-sm" ng-model="selectedEvent.lieu" />
+                                                                </div> 
+                                                             </span>
+                                                             <span style="display: inline-block;width: 48%;">
+                                                                      <div class="input-group  col-sm-12  col-md-12">
+                                                                        <label for="sexe">Confidentialite</label>
+                                                                        <div class="input-group">
+                                                                                <select class="selectpicker form-control"  data-style="btn-default"  class="input-sm" ng-model="selectedEvent.confidentialite">
+                                                                                        <option value="0">Tout le monde</option>
+                                                                                        <option value="1">Moi seulement</option>
+                                                                                        <option value="2">Utilisateur interne seulement</option>
+                                                                                </select>   
+                                                                                <span class="input-group-btn">
+                                                                                        <button disabled type="button" class="btn btn-default my-group-button btn-sm" data-toggle="modal" data-target="#myModal00">
+                                                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:blue"></span>
+                                                                                       </button>
+                                                                               </span>
+                                                                        </div>                             
+                                                                    </div>
+                                                                    <div class="input-group-sm  col-sm-12  col-md-12">
+                                                                        <label for="sexe">Afficher heure comme</label>
+                                                                        <div class="input-group">
+                                                                                <select class="selectpicker form-control"  data-style="btn-default"  class="input-sm" ng-model="selectedEvent.disponibilite">
+                                                                                        <option value="0">Libre</option>
+                                                                                        <option value="1">Occupé(e)</option>                                            
+                                                                                </select>   
+                                                                                <span class="input-group-btn">
+                                                                                       <button disabled type="button" class="btn btn-default my-group-button btn-sm" data-toggle="modal" data-target="#myModal00">
+                                                                                         <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:blue"></span>
+                                                                                       </button>
+                                                                               </span>
+                                                                      </div>                             
+                                                                    </div>
+                                                             </span>
+                                                    </div>
+                                      </div>
+                             </div>  
+                       </form>
+                <!--</div>-->              
+           </div>   
+      </div>   
+
+<script>
+   // $timeout(function() {
+        $('.selectpicker').selectpicker('refresh');                
+   // });
+</script>

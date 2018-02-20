@@ -1,0 +1,42 @@
+<!-- <div class="col-sm-3 col-md-2 sidebar">      
+  <ul class="nav nav-sidebar" ng-repeat="action in currentModule.actions">
+    <li><a href=""  ng-click="getSelectAction(action)">{{action.name}}</a></li>            
+  </ul>         
+</div> -->
+ 
+<div class="col-sm-3  col-md-2  sidebar row flex-row"  style="margin-top: -10px; padding: 0px;overflow-y: hidden;"> 
+    <div class="panel panel-default flex-col" style="width: 100%;height: 100%;">
+		<div class="panel-heading   actions-group-heading" style="height: 20%;text-align: center;">
+                    <img id="appli_icon_id" style="width: 100%;height: 100%;">
+		</div>
+		<div class="panel-body actions-group-body" style="padding: 0px;height: 70%;overflow: auto;">
+			  <div class="panel-group  actions-group-body" id="accordion" style="margin-top: -10px;width: 100%;">
+                              <div class="panel panel-default flex-col action-group"  ng-repeat="menu in currentModule.groups" ng-hide="menu.showmenu==false">
+			    		<div class="panel-heading  action-group-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#{{menu.name}}">
+                                            <span class="{{menu.icon}}">
+                                            </span>{{menu.label}}</a>
+                                        </h4>
+			            </div>
+			            <div id={{menu.name}} class="panel-collapse collapse in action-group-body">
+			                <div class="panel-body flex-grow  action-group-body">
+			                    <table class="table" >
+                                                <tr ng-repeat=" menuitem in menu.actions"  ng-hide="menuitem.securitylevel==3">
+			                            <td>
+			                                <span class="{{menuitem.icon}} text-primary"></span>
+			                                <a href="#" ng-click="getSelectAction(menuitem)">{{menuitem.label}}</a>
+			                            </td>
+			                        </tr>                       
+			                    </table>
+			                </div>
+			            </div>
+			    	</div>
+                       </div>        
+		</div>
+		<div  class="panel-footer navbar-fixed-bottom">
+			 Fourni par <a href="#">Megatim</a>
+		</div>
+	</div>    
+</div>
+	
